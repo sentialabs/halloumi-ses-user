@@ -6,6 +6,5 @@ import { sesUser } from '../src';
 test('addUser', () => {
   const stack = new cdk.Stack();
   new sesUser(stack, 'User');
-  console.log(stack);
   expect(stack).to(haveResource('AWS::IAM::User'));
 });
