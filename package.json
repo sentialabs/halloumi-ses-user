@@ -2,7 +2,7 @@
   "name": "halloumi-ses",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sentiampc/halloumi-ses.git"
+    "url": "https://github.com/sentialabs/halloumi-ses-user.git"
   },
   "scripts": {
     "projen": "npx projen",
