@@ -1,4 +1,3 @@
-
 import { expect, haveResource, countResources } from '@aws-cdk/assert';
 import * as cdk from '@aws-cdk/core';
 import { SesUser } from '../src';
