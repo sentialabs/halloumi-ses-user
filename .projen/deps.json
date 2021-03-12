@@ -23,6 +23,10 @@
       "type": "build"
     },
     {
+      "name": "@types/rewire",
+      "type": "build"
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "type": "build"
     },
@@ -79,6 +83,10 @@
     {
       "name": "projen",
       "version": "^0.16.42",
+      "type": "build"
+    },
+    {
+      "name": "rewire",
       "type": "build"
     },
     {

@@ -53,6 +53,9 @@
       "steps": [
         {
           "exec": "tsc --noEmit --project tsconfig.jest.json"
+        },
+        {
+          "exec": "npx projen compile"
         }
       ]
     },

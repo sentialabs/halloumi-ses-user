@@ -55,6 +55,8 @@ const project = new AwsCdkConstructLibrary({
   devDeps: [
     '@types/aws-lambda',
     '@types/cfn-response',
+    '@types/rewire',
+    'rewire',
   ], /* Build dependencies for this module. */
   // entrypoint: 'lib/index.js',                                                /* Module entrypoint (`main` in `package.json`). */
   // homepage: undefined,                                                       /* Package's Homepage / Website. */
@@ -97,6 +99,11 @@ const project = new AwsCdkConstructLibrary({
       '/node_modules/',
       '/test/utils/',
     ],
+    typescriptConfig: {
+      compilerOptions: {
+        esModuleInterop: true,
+      },
+    },
   }, /* Jest options. */
   // jsiiReleaseVersion: 'latest',                                              /* Version requirement of `jsii-release` which is used to publish modules to npm. */
   // mergify: true,                                                             /* Adds mergify configuration. */
@@ -133,6 +140,7 @@ const project = new AwsCdkConstructLibrary({
   // readme: undefined,                                                         /* The README setup. */
 });
 
-// project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');
+//project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');
+project.testCompileTask.exec('npx projen compile');
 
 project.synth();
