@@ -47,13 +47,12 @@
       "type": "build"
     },
     {
-      "name": "jest-junit",
-      "version": "^12",
+      "name": "jest",
       "type": "build"
     },
     {
-      "name": "jest",
-      "version": "26.6.3",
+      "name": "jest-junit",
+      "version": "^12",
       "type": "build"
     },
     {

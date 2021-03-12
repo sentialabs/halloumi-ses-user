@@ -93,6 +93,10 @@ const project = new AwsCdkConstructLibrary({
   jest: true, /* Setup jest unit tests. */
   jestOptions: {
     jestVersion: '26.6.3',
+    ignorePatterns: [
+      '/node_modules/',
+      '/test/utils/',
+    ],
   }, /* Jest options. */
   // jsiiReleaseVersion: 'latest',                                              /* Version requirement of `jsii-release` which is used to publish modules to npm. */
   // mergify: true,                                                             /* Adds mergify configuration. */

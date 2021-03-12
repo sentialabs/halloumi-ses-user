@@ -88,10 +88,12 @@
     ],
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/test/utils/"
     ],
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/test/utils/"
     ],
     "watchPathIgnorePatterns": [
       "/node_modules/"
