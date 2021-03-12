@@ -88,9 +88,6 @@
         },
         {
           "spawn": "package"
-        },
-        {
-          "exec": "esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=src/lambda/build/index.js"
         }
       ]
     },

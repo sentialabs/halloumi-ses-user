@@ -45,14 +45,17 @@ const project = new AwsCdkConstructLibrary({
   // authorUrl: undefined,                                                      /* Author's URL / Website. */
   // autoDetectBin: true,                                                       /* Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. */
   // bin: undefined,                                                            /* Binary programs vended with your module. */
-  // bundledDeps: undefined,                                                    /* List of dependencies to bundle into this module. */
+  bundledDeps: [
+    'cfn-response',
+  ], /* List of dependencies to bundle into this module. */
   deps: [
-    '@types/aws-lambda',
-    '@types/cfn-response',
     'cfn-response',
   ], /* Runtime dependencies of this module. */
   // description: undefined,                                                    /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],                                                               /* Build dependencies for this module. */
+  devDeps: [
+    '@types/aws-lambda',
+    '@types/cfn-response',
+  ], /* Build dependencies for this module. */
   // entrypoint: 'lib/index.js',                                                /* Module entrypoint (`main` in `package.json`). */
   // homepage: undefined,                                                       /* Package's Homepage / Website. */
   // keywords: undefined,                                                       /* Keywords to include in `package.json`. */
@@ -67,7 +70,7 @@ const project = new AwsCdkConstructLibrary({
   // packageManager: NodePackageManager.YARN,                                   /* The Node Package Manager used to execute scripts. */
   // packageName: undefined,                                                    /* The "name" in package.json. */
   // peerDependencyOptions: undefined,                                          /* Options for `peerDeps`. */
-  // peerDeps: [],                                                              /* Peer dependencies for this module. */
+  peerDeps: [], /* Peer dependencies for this module. */
   // projenCommand: 'npx projen',                                               /* The shell command to use in order to run the projen CLI. */
   // repository: undefined,                                                     /* The repository is the location where the actual code for your package lives. */
   // repositoryDirectory: undefined,                                            /* If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. */
@@ -126,6 +129,6 @@ const project = new AwsCdkConstructLibrary({
   // readme: undefined,                                                         /* The README setup. */
 });
 
-project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=src/lambda/build/index.js');
+// project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');
 
 project.synth();
