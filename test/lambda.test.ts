@@ -4,7 +4,7 @@ import { constructCFNCRREvent, constructCFNCRRContext } from './utils/helpers';
 
 describe('Test Lambda', () => {
   it('should return True', async () => {
-    const addMock = jest.spyOn(cfnResp, 'send');
+    const addMock = jest.spyOn(cfnResp, 'send').mockImplementation();
 
     const event = constructCFNCRREvent();
     const context = constructCFNCRRContext();
