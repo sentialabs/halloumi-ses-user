@@ -16,7 +16,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/custom-resources',
     '@aws-cdk/core',
   ], /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
-  cdkTestDependencies: undefined,                                            /* AWS CDK modules required for testing. */
+  cdkTestDependencies: undefined, /* AWS CDK modules required for testing. */
   // cdkVersionPinning: false,                                                  /* Use pinned version instead of caret version for CDK. */
 
   /* ConstructLibraryOptions */
@@ -47,15 +47,17 @@ const project = new AwsCdkConstructLibrary({
   // bin: undefined,                                                            /* Binary programs vended with your module. */
   // bundledDeps: undefined,                                                    /* List of dependencies to bundle into this module. */
   deps: [
-    '@types/aws-lambda'
-  ],                                                                  /* Runtime dependencies of this module. */
+    '@types/aws-lambda',
+    '@types/cfn-response',
+    'cfn-response',
+  ], /* Runtime dependencies of this module. */
   // description: undefined,                                                    /* The description is just a string that helps people understand the purpose of the package. */
   // devDeps: [],                                                               /* Build dependencies for this module. */
   // entrypoint: 'lib/index.js',                                                /* Module entrypoint (`main` in `package.json`). */
   // homepage: undefined,                                                       /* Package's Homepage / Website. */
   // keywords: undefined,                                                       /* Keywords to include in `package.json`. */
-  license: 'Apache-2.0',                                                     /* License's SPDX identifier. */
-  licensed: true,                                                            /* Indicates if a license should be added. */
+  license: 'Apache-2.0', /* License's SPDX identifier. */
+  licensed: true, /* Indicates if a license should be added. */
   // maxNodeVersion: undefined,                                                 /* Minimum node.js version to require via `engines` (inclusive). */
   // minNodeVersion: undefined,                                                 /* Minimum Node.js version to require via package.json `engines` (inclusive). */
   // npmAccess: undefined,                                                      /* Access level of the npm package. */
@@ -80,15 +82,15 @@ const project = new AwsCdkConstructLibrary({
   // codeCovTokenSecret: undefined,                                             /* Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. */
   // copyrightOwner: undefined,                                                 /* License copyright owner. */
   // copyrightPeriod: undefined,                                                /* The copyright years to put in the LICENSE file. */
-  dependabot: true,                                                          /* Include dependabot configuration. */
+  dependabot: true, /* Include dependabot configuration. */
   dependabotOptions: {
-    autoMerge: true
-  },                                              /* Options for dependabot. */
+    autoMerge: true,
+  }, /* Options for dependabot. */
   // gitignore: undefined,                                                      /* Additional entries to .gitignore. */
-  jest: true,                                                                /* Setup jest unit tests. */
+  jest: true, /* Setup jest unit tests. */
   jestOptions: {
-    jestVersion: '26.6.3'
-  },                                                    /* Jest options. */
+    jestVersion: '26.6.3',
+  }, /* Jest options. */
   // jsiiReleaseVersion: 'latest',                                              /* Version requirement of `jsii-release` which is used to publish modules to npm. */
   // mergify: true,                                                             /* Adds mergify configuration. */
   // mergifyAutoMergeLabel: 'auto-merge',                                       /* Automatically merge PRs that build successfully and have this label. */
@@ -124,6 +126,6 @@ const project = new AwsCdkConstructLibrary({
   // readme: undefined,                                                         /* The README setup. */
 });
 
-project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=src/lambda/build/index.js')
+project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=src/lambda/build/index.js');
 
 project.synth();

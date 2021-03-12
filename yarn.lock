@@ -914,7 +914,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@types/aws-lambda@*":
+"@types/aws-lambda@*", "@types/aws-lambda@^8.10.72":
   version "8.10.72"
   resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.72.tgz#af2a6eeaf39be9674e3856f1870d9d15cf75e2e0"
   integrity sha512-jOrTwAhSiUtBIN/QsWNKlI4+4aDtpZ0sr2BRvKW6XQZdspgHUSHPcuzxbzCRiHUiDQ+0026u5TSE38VyIhNnfA==
@@ -951,6 +951,13 @@
   integrity sha512-kSjgDMZONiIfSH1Nxcr5JIRMwUetDki63FSQfpTCz8ogF3Ulqm8+mr5f78dUYs6vMiB6gBusQqfQmBvHZj/lwg==
   dependencies:
     "@babel/types" "^7.3.0"
+
+"@types/cfn-response@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@types/cfn-response/-/cfn-response-1.0.4.tgz#95411eae9df4bf2356b036bd0db7c209cbbdb0e8"
+  integrity sha512-d0Y9SRbg/1X3GZqHidcKTWrkFRyeTGbILSJjdQmy06AP+wLzJRFAaURjgCWwwb+GHR4fwxmViSAOwHf1mWbxRA==
+  dependencies:
+    "@types/aws-lambda" "*"
 
 "@types/graceful-fs@^4.1.2":
   version "4.1.5"
@@ -1590,6 +1597,11 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
+
+cfn-response@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/cfn-response/-/cfn-response-1.0.1.tgz#a8ec03950c0683c51495e8ca680d9dc0b884b137"
+  integrity sha1-qOwDlQwGg8UUlejKaA2dwLiEsTc=
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
