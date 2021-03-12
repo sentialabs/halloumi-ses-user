@@ -1,7 +1,11 @@
-import { User, UserProps } from '@aws-cdk/aws-iam';
+import { User, UserProps, CfnAccessKey } from '@aws-cdk/aws-iam';
 import { Construct } from '@aws-cdk/core';
 export class SesUser extends User {
   constructor(scope: Construct, id: string, props?: UserProps) {
     super(scope, id, props);
+
+    new CfnAccessKey(scope, `${id}AccessKeys`, {
+      userName: this.userName,
+    });
   }
 }

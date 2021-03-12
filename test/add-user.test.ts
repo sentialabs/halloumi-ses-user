@@ -9,4 +9,10 @@ describe('User', () => {
     expect(stack).to(haveResource('AWS::IAM::User'));
     expect(stack).to(countResources('AWS::IAM::User', 1));
   });
+  it('creates the access_key', () => {
+    const stack = new cdk.Stack();
+    new SesUser(stack, 'User');
+    expect(stack).to(haveResource('AWS::IAM::AccessKey'));
+    expect(stack).to(countResources('AWS::IAM::AccessKey', 1));
+  });
 });
