@@ -141,6 +141,6 @@ const project = new AwsCdkConstructLibrary({
 });
 
 //project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');
-project.testCompileTask.exec('npx projen compile');
+project.testCompileTask.exec('jsii --silence-warnings=reserved-word --no-fix-peer-dependencies');
 
 project.synth();

@@ -55,7 +55,7 @@
           "exec": "tsc --noEmit --project tsconfig.jest.json"
         },
         {
-          "exec": "npx projen compile"
+          "exec": "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies"
         }
       ]
     },
