@@ -22,6 +22,34 @@ describe('Test Lambda', () => {
     revert();
   });
 
+  it('should call on_update', async () => {
+    const mockOnCreate = jest.fn(() => {});
+    const revert = _lambdaModule.__set__('on_update', mockOnCreate);
+    const event = constructCFNCRREvent({
+      RequestType: 'Update',
+    });
+    const context = constructCFNCRRContext();
+
+    _lambdaModule.on_event(event, context);
+    expect(mockOnCreate).toHaveBeenCalled();
+
+    revert();
+  });
+
+  it('should call on_delete', async () => {
+    const mockOnCreate = jest.fn(() => {});
+    const revert = _lambdaModule.__set__('on_delete', mockOnCreate);
+    const event = constructCFNCRREvent({
+      RequestType: 'Delete',
+    });
+    const context = constructCFNCRRContext();
+
+    _lambdaModule.on_event(event, context);
+    expect(mockOnCreate).toHaveBeenCalled();
+
+    revert();
+  });
+
   it('should send', async () => {
     const cfnRespSendMock = jest.spyOn(cfnResp, 'send').mockImplementation();
     const event = constructCFNCRREvent();
