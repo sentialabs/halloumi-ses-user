@@ -32,5 +32,7 @@ describe('User', () => {
     expect(stack).to(haveResource('AWS::SecretsManager::Secret', {
       SecretString: secret,
     }));
+    expect(stack).to(haveResource('AWS::IAM::Role'));
+    expect(stack).to(countResources('AWS::IAM::Role', 1));
   });
 });
