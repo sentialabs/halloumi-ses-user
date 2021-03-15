@@ -18,6 +18,10 @@
       "type": "build"
     },
     {
+      "name": "@types/jest",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^10.17.0",
       "type": "build"
