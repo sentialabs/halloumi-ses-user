@@ -13,8 +13,7 @@ const project = new AwsCdkConstructLibrary({
   // cdkAssert: true,                                                           /* Install the @aws-cdk/assert library? */
   cdkDependencies: [
     '@aws-cdk/aws-iam',
-    '@aws-cdk/aws-secretsmanager',
-    '@aws-cdk/custom-resources',
+    '@aws-cdk/aws-lambda',
     '@aws-cdk/core',
   ], /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
   cdkTestDependencies: undefined, /* AWS CDK modules required for testing. */

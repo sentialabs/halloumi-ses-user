@@ -116,17 +116,12 @@
       "type": "peer"
     },
     {
-      "name": "@aws-cdk/aws-secretsmanager",
+      "name": "@aws-cdk/aws-lambda",
       "version": "^1.73.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.73.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/custom-resources",
       "version": "^1.73.0",
       "type": "peer"
     },
@@ -141,17 +136,12 @@
       "type": "runtime"
     },
     {
-      "name": "@aws-cdk/aws-secretsmanager",
+      "name": "@aws-cdk/aws-lambda",
       "version": "^1.73.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.73.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/custom-resources",
       "version": "^1.73.0",
       "type": "runtime"
     },
