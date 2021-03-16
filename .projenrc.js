@@ -52,9 +52,7 @@ const project = new AwsCdkConstructLibrary({
   // description: undefined,                                                    /* The description is just a string that helps people understand the purpose of the package. */
   devDeps: [
     'crypto',
-    '@types/jest',
     '@types/aws-lambda',
-    '@types/cfn-response',
     '@types/rewire',
     'rewire',
   ], /* Build dependencies for this module. */

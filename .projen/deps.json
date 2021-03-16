@@ -10,14 +10,6 @@
       "type": "build"
     },
     {
-      "name": "@types/cfn-response",
-      "type": "build"
-    },
-    {
-      "name": "@types/jest",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
       "type": "build"
     },
