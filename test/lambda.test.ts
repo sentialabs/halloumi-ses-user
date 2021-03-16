@@ -4,11 +4,18 @@ import { constructCFNCRREvent, constructCFNCRRContext } from './utils/helpers';
 process.env.AWS_REGION = 'us-east-1';
 jest.spyOn(global.console, 'log').mockImplementation();
 const _lambda = rewire('../src/lambda/index');
-_lambda.__set__('console', {
-  log: jest.fn(() => {}),
-});
+let consoleRevert: { (): void; (): void };
 
 describe('Test Lambda', () => {
+  beforeAll(() => {
+    consoleRevert = _lambda.__set__('console', {
+      log: jest.fn(() => {}),
+    });
+  });
+
+  afterAll(() => {
+    consoleRevert();
+  });
 
   it('should call on_create', async () => {
     const mockOnCreate = jest.fn(() => {});
@@ -105,5 +112,23 @@ describe('Test Lambda', () => {
     expect(mockSendResponse).toHaveBeenCalled();
     expect(mockSendResponse.mock.calls[0][2]).toBe('SUCCESS');
     revert();
+  });
+});
+
+describe('Secure Lambda', () => {
+  it('should NOT log password', async () => {
+    let consoleTest = jest.fn((_msg, _object) => {});
+    let consoleRevert = _lambda.__set__('console', {
+      log: consoleTest,
+    });
+
+    const event = constructCFNCRREvent();
+    const context = constructCFNCRRContext();
+
+    _lambda.on_event(event, context);
+    expect(consoleTest).toHaveBeenCalled();
+    expect(consoleTest.mock.calls[0][0].ResourceProperties.SecretKey).toBeNull();
+    expect(consoleTest.mock.calls[3][1].Data.password).toBeNull();
+    consoleRevert();
   });
 });
