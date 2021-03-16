@@ -1,7 +1,7 @@
-import { User, UserProps, CfnAccessKey, Role, ServicePrincipal } from '@aws-cdk/aws-iam';
-import { Construct, Fn, CustomResource } from '@aws-cdk/core';
-import { Function, Code, Runtime } from '@aws-cdk/aws-lambda';
 import * as path from 'path';
+import { User, UserProps, CfnAccessKey, Role, ServicePrincipal, Effect, PolicyStatement } from '@aws-cdk/aws-iam';
+import { Function, Code, Runtime, LayerVersion } from '@aws-cdk/aws-lambda';
+import { Construct, Fn, CustomResource } from '@aws-cdk/core';
 
 const RESOURCE_TYPE = 'Custom::HalloumiSesUserPassword';
 export class SesUser extends User {
@@ -16,13 +16,13 @@ export class SesUser extends User {
    *
    * @attribute true
    */
-   readonly secretKey: string;
+  readonly secretKey: string;
   /**
    * An attribute that represents the user smtp password.
    *
    * @attribute true
    */
-   readonly smtpPassword: string;
+  readonly smtpPassword: string;
 
   constructor(scope: Construct, id: string, props?: UserProps) {
     super(scope, id, props);
@@ -38,23 +38,32 @@ export class SesUser extends User {
     const _lambda_role = new Role(scope, `${id}Role`, {
       assumedBy: new ServicePrincipal('lambda.amazonaws.com'),
     });
+    _lambda_role.addToPrincipalPolicy( new PolicyStatement({
+      actions: ['logs:CreateLogGroup', 'logs:CreateLogStream', 'logs:PutLogEvents'],
+      effect: Effect.ALLOW,
+      resources: ['arn:aws:logs:*:*:*'],
+    }));
+
+    const layer_version = new LayerVersion(scope, `${id}Layer`, {
+      code: Code.fromAsset(path.join(__dirname, 'crypto.zip')),
+    });
 
     const _lambda_ses_password = new Function(scope, `${id}Function`, {
       code: Code.fromAsset(path.join(__dirname, 'lambda')),
       runtime: Runtime.NODEJS_12_X,
-      handler: 'index.handler',
-      role: _lambda_role
-    })
+      handler: 'index.on_event',
+      role: _lambda_role,
+      layers: [layer_version],
+    });
 
     const custom_resource = new CustomResource(scope, `${id}CustomResource`, {
       serviceToken: _lambda_ses_password.functionArn,
       resourceType: RESOURCE_TYPE,
       properties: {
-        AccessKey: this.accessKey,
-        SecretKey: this.secretKey
-      }
-    })
+        SecretKey: this.secretKey,
+      },
+    });
 
-    this.smtpPassword = custom_resource.getAtt('SmtpPassword').toString();
+    this.smtpPassword = custom_resource.getAtt('password').toString();
   }
 }

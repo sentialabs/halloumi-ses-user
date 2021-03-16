@@ -1,7 +1,10 @@
 import { CloudFormationCustomResourceEvent, Context } from 'aws-lambda'; // eslint-disable-line import/no-unresolved
 
-const DEFAULT_OPTIONS = {
+const DEFAULT_EVENT = {
   RequestType: 'Create',
+  ResourceProperties: {
+    SecretKey: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
+  },
 };
 
 const DEFAULT_CONTEXT = {
@@ -15,8 +18,8 @@ const DEFAULT_CONTEXT = {
   logStreamName: '',
 };
 
-export function constructCFNCRREvent (options: any = DEFAULT_OPTIONS): CloudFormationCustomResourceEvent {
-  const opts = Object.assign({}, DEFAULT_OPTIONS, options);
+export function constructCFNCRREvent (options: any = DEFAULT_EVENT): CloudFormationCustomResourceEvent {
+  const opts = Object.assign({}, DEFAULT_EVENT, options);
   return {
     ServiceToken: '',
     ResponseURL: '',
@@ -28,6 +31,7 @@ export function constructCFNCRREvent (options: any = DEFAULT_OPTIONS): CloudForm
     StackId: '',
     ResourceProperties: {
       ServiceToken: '',
+      SecretKey: opts.ResourceProperties.SecretKey,
     },
   };
 }

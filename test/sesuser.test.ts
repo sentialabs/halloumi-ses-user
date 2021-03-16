@@ -19,36 +19,39 @@ describe('User', () => {
           Action: 'sts:AssumeRole',
         }],
         Version: '2012-10-17',
-      }
+      },
     }));
+    expect(stack).to(countResources('AWS::Lambda::LayerVersion', 1));
     expect(stack).to(countResources('AWS::Lambda::Function', 1));
     expect(stack).to(haveResourceLike('AWS::Lambda::Function', {
       Role: {
-        "Fn::GetAtt": [
-          "UserRoleB7C3739B",
-          "Arn"
-        ]
+        'Fn::GetAtt': [
+          'UserRoleB7C3739B',
+          'Arn',
+        ],
       },
-      Handler: "index.handler",
-      Runtime: "nodejs12.x"
+      Handler: 'index.on_event',
+      Runtime: 'nodejs12.x',
+      Layers: [
+        {
+          Ref: 'UserLayerBBE2CA84',
+        },
+      ],
     }));
     expect(stack).to(countResources('Custom::HalloumiSesUserPassword', 1));
     expect(stack).to(haveResource('Custom::HalloumiSesUserPassword', {
       ServiceToken: {
-        "Fn::GetAtt": [
-            "UserFunction89BB1343",
-            "Arn"
-        ]
-      },
-      AccessKey: {
-        "Ref": "UserAccessKeys"
+        'Fn::GetAtt': [
+          'UserFunction89BB1343',
+          'Arn',
+        ],
       },
       SecretKey: {
-        "Fn::GetAtt": [
-          "UserAccessKeys",
-          "SecretAccessKey"
-        ]
-      }
+        'Fn::GetAtt': [
+          'UserAccessKeys',
+          'SecretAccessKey',
+        ],
+      },
     }));
   });
 });
