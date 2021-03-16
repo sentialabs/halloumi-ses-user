@@ -43,6 +43,12 @@
         },
         {
           "spawn": "docgen"
+        },
+        {
+          "exec": "cp -R src/lambda lib/"
+        },
+        {
+          "exec": "cp -R src/crypto.zip lib/"
         }
       ]
     },
@@ -53,9 +59,6 @@
       "steps": [
         {
           "exec": "tsc --noEmit --project tsconfig.jest.json"
-        },
-        {
-          "exec": "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies"
         }
       ]
     },

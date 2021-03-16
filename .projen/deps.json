@@ -39,6 +39,10 @@
       "type": "build"
     },
     {
+      "name": "crypto",
+      "type": "build"
+    },
+    {
       "name": "eslint",
       "type": "build"
     },
@@ -107,10 +111,6 @@
       "type": "build"
     },
     {
-      "name": "cfn-response",
-      "type": "bundled"
-    },
-    {
       "name": "@aws-cdk/aws-iam",
       "version": "^1.73.0",
       "type": "peer"
@@ -143,10 +143,6 @@
     {
       "name": "@aws-cdk/core",
       "version": "^1.73.0",
-      "type": "runtime"
-    },
-    {
-      "name": "cfn-response",
       "type": "runtime"
     }
   ],

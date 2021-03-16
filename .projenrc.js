@@ -46,13 +46,12 @@ const project = new AwsCdkConstructLibrary({
   // autoDetectBin: true,                                                       /* Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. */
   // bin: undefined,                                                            /* Binary programs vended with your module. */
   bundledDeps: [
-    'cfn-response',
   ], /* List of dependencies to bundle into this module. */
   deps: [
-    'cfn-response',
   ], /* Runtime dependencies of this module. */
   // description: undefined,                                                    /* The description is just a string that helps people understand the purpose of the package. */
   devDeps: [
+    'crypto',
     '@types/jest',
     '@types/aws-lambda',
     '@types/cfn-response',
@@ -142,6 +141,7 @@ const project = new AwsCdkConstructLibrary({
 });
 
 //project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');
-project.testCompileTask.exec('jsii --silence-warnings=reserved-word --no-fix-peer-dependencies');
+project.compileTask.exec('cp -R src/lambda lib/');
+project.compileTask.exec('cp -R src/crypto.zip lib/');
 
 project.synth();
