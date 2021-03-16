@@ -6,6 +6,10 @@
       "type": "build"
     },
     {
+      "name": "@types/aws-lambda",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -15,11 +19,19 @@
       "type": "build"
     },
     {
+      "name": "@types/rewire",
+      "type": "build"
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
+      "type": "build"
+    },
+    {
+      "name": "crypto",
       "type": "build"
     },
     {
@@ -39,12 +51,13 @@
       "type": "build"
     },
     {
-      "name": "jest",
+      "name": "jest-junit",
+      "version": "^12",
       "type": "build"
     },
     {
-      "name": "jest-junit",
-      "version": "^12",
+      "name": "jest",
+      "version": "26.6.3",
       "type": "build"
     },
     {
@@ -73,6 +86,10 @@
       "type": "build"
     },
     {
+      "name": "rewire",
+      "type": "build"
+    },
+    {
       "name": "standard-version",
       "version": "^9",
       "type": "build"
@@ -91,6 +108,11 @@
       "type": "peer"
     },
     {
+      "name": "@aws-cdk/aws-lambda",
+      "version": "^1.73.0",
+      "type": "peer"
+    },
+    {
       "name": "@aws-cdk/core",
       "version": "^1.73.0",
       "type": "peer"
@@ -102,6 +124,11 @@
     },
     {
       "name": "@aws-cdk/aws-iam",
+      "version": "^1.73.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-lambda",
       "version": "^1.73.0",
       "type": "runtime"
     },

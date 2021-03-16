@@ -13,9 +13,10 @@ const project = new AwsCdkConstructLibrary({
   // cdkAssert: true,                                                           /* Install the @aws-cdk/assert library? */
   cdkDependencies: [
     '@aws-cdk/aws-iam',
+    '@aws-cdk/aws-lambda',
     '@aws-cdk/core',
   ], /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
-  // cdkTestDependencies: undefined,                                            /* AWS CDK modules required for testing. */
+  cdkTestDependencies: undefined, /* AWS CDK modules required for testing. */
   // cdkVersionPinning: false,                                                  /* Use pinned version instead of caret version for CDK. */
 
   /* ConstructLibraryOptions */
@@ -44,15 +45,22 @@ const project = new AwsCdkConstructLibrary({
   // authorUrl: undefined,                                                      /* Author's URL / Website. */
   // autoDetectBin: true,                                                       /* Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. */
   // bin: undefined,                                                            /* Binary programs vended with your module. */
-  // bundledDeps: undefined,                                                    /* List of dependencies to bundle into this module. */
-  // deps: [],                                                                  /* Runtime dependencies of this module. */
+  bundledDeps: [
+  ], /* List of dependencies to bundle into this module. */
+  deps: [
+  ], /* Runtime dependencies of this module. */
   // description: undefined,                                                    /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],                                                               /* Build dependencies for this module. */
+  devDeps: [
+    'crypto',
+    '@types/aws-lambda',
+    '@types/rewire',
+    'rewire',
+  ], /* Build dependencies for this module. */
   // entrypoint: 'lib/index.js',                                                /* Module entrypoint (`main` in `package.json`). */
   // homepage: undefined,                                                       /* Package's Homepage / Website. */
   // keywords: undefined,                                                       /* Keywords to include in `package.json`. */
-  // license: 'Apache-2.0',                                                     /* License's SPDX identifier. */
-  // licensed: true,                                                            /* Indicates if a license should be added. */
+  license: 'Apache-2.0', /* License's SPDX identifier. */
+  licensed: true, /* Indicates if a license should be added. */
   // maxNodeVersion: undefined,                                                 /* Minimum node.js version to require via `engines` (inclusive). */
   // minNodeVersion: undefined,                                                 /* Minimum Node.js version to require via package.json `engines` (inclusive). */
   // npmAccess: undefined,                                                      /* Access level of the npm package. */
@@ -62,7 +70,7 @@ const project = new AwsCdkConstructLibrary({
   // packageManager: NodePackageManager.YARN,                                   /* The Node Package Manager used to execute scripts. */
   // packageName: undefined,                                                    /* The "name" in package.json. */
   // peerDependencyOptions: undefined,                                          /* Options for `peerDeps`. */
-  // peerDeps: [],                                                              /* Peer dependencies for this module. */
+  peerDeps: [], /* Peer dependencies for this module. */
   // projenCommand: 'npx projen',                                               /* The shell command to use in order to run the projen CLI. */
   // repository: undefined,                                                     /* The repository is the location where the actual code for your package lives. */
   // repositoryDirectory: undefined,                                            /* If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. */
@@ -77,11 +85,24 @@ const project = new AwsCdkConstructLibrary({
   // codeCovTokenSecret: undefined,                                             /* Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. */
   // copyrightOwner: undefined,                                                 /* License copyright owner. */
   // copyrightPeriod: undefined,                                                /* The copyright years to put in the LICENSE file. */
-  // dependabot: true,                                                          /* Include dependabot configuration. */
-  // dependabotOptions: undefined,                                              /* Options for dependabot. */
+  dependabot: true, /* Include dependabot configuration. */
+  dependabotOptions: {
+    autoMerge: true,
+  }, /* Options for dependabot. */
   // gitignore: undefined,                                                      /* Additional entries to .gitignore. */
-  // jest: true,                                                                /* Setup jest unit tests. */
-  // jestOptions: undefined,                                                    /* Jest options. */
+  jest: true, /* Setup jest unit tests. */
+  jestOptions: {
+    jestVersion: '26.6.3',
+    ignorePatterns: [
+      '/node_modules/',
+      '/test/utils/',
+    ],
+    typescriptConfig: {
+      compilerOptions: {
+        esModuleInterop: true,
+      },
+    },
+  }, /* Jest options. */
   // jsiiReleaseVersion: 'latest',                                              /* Version requirement of `jsii-release` which is used to publish modules to npm. */
   // mergify: true,                                                             /* Adds mergify configuration. */
   // mergifyAutoMergeLabel: 'auto-merge',                                       /* Automatically merge PRs that build successfully and have this label. */
@@ -116,5 +137,9 @@ const project = new AwsCdkConstructLibrary({
   // projectType: ProjectType.UNKNOWN,                                          /* Which type of project this is (library/app). */
   // readme: undefined,                                                         /* The README setup. */
 });
+
+//project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');
+project.compileTask.exec('cp -R src/lambda lib/');
+project.compileTask.exec('cp -R src/crypto.zip lib/');
 
 project.synth();

@@ -43,6 +43,12 @@
         },
         {
           "spawn": "docgen"
+        },
+        {
+          "exec": "cp -R src/lambda lib/"
+        },
+        {
+          "exec": "cp -R src/crypto.zip lib/"
         }
       ]
     },
