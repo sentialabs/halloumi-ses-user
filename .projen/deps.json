@@ -31,10 +31,6 @@
       "type": "build"
     },
     {
-      "name": "crypto",
-      "type": "build"
-    },
-    {
       "name": "eslint",
       "type": "build"
     },
