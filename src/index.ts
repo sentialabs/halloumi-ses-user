@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { User, UserProps, CfnAccessKey, Role, ServicePrincipal, Effect, PolicyStatement } from '@aws-cdk/aws-iam';
-import { Function, Code, Runtime, LayerVersion } from '@aws-cdk/aws-lambda';
+import { Function, Code, Runtime } from '@aws-cdk/aws-lambda';
 import { Construct, Fn, CustomResource } from '@aws-cdk/core';
 
 const RESOURCE_TYPE = 'Custom::HalloumiSesUserPassword';
@@ -44,16 +44,11 @@ export class SesUser extends User {
       resources: ['arn:aws:logs:*:*:*'],
     }));
 
-    const layer_version = new LayerVersion(scope, `${id}Layer`, {
-      code: Code.fromAsset(path.join(__dirname, 'crypto.zip')),
-    });
-
     const _lambda_ses_password = new Function(scope, `${id}Function`, {
       code: Code.fromAsset(path.join(__dirname, 'lambda')),
       runtime: Runtime.NODEJS_12_X,
       handler: 'index.on_event',
       role: _lambda_role,
-      layers: [layer_version],
     });
 
     const custom_resource = new CustomResource(scope, `${id}CustomResource`, {

@@ -21,7 +21,6 @@ describe('User', () => {
         Version: '2012-10-17',
       },
     }));
-    expect(stack).to(countResources('AWS::Lambda::LayerVersion', 1));
     expect(stack).to(countResources('AWS::Lambda::Function', 1));
     expect(stack).to(haveResourceLike('AWS::Lambda::Function', {
       Role: {
@@ -32,11 +31,6 @@ describe('User', () => {
       },
       Handler: 'index.on_event',
       Runtime: 'nodejs12.x',
-      Layers: [
-        {
-          Ref: 'UserLayerBBE2CA84',
-        },
-      ],
     }));
     expect(stack).to(countResources('Custom::HalloumiSesUserPassword', 1));
     expect(stack).to(haveResource('Custom::HalloumiSesUserPassword', {

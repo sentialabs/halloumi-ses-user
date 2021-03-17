@@ -52,7 +52,6 @@ const project = new AwsCdkConstructLibrary({
   // description: undefined,                                                    /* The description is just a string that helps people understand the purpose of the package. */
   devDeps: [
     'nock',
-    'crypto',
     '@types/aws-lambda',
     '@types/rewire',
     'rewire',
@@ -141,6 +140,5 @@ const project = new AwsCdkConstructLibrary({
 
 //project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');
 project.compileTask.exec('cp -R src/lambda lib/');
-project.compileTask.exec('cp -R src/crypto.zip lib/');
 
 project.synth();
