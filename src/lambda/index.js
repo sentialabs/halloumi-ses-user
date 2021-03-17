@@ -13,8 +13,10 @@ function sendResponse(event, context, responseStatus, responseData) {
       LogicalResourceId: event.LogicalResourceId,
       Data: responseData
   });
+  let _responseBody = JSON.parse(responseBody);
+  _responseBody.Data.password = null;  
 
-  console.log("RESPONSE BODY:\n", responseBody);
+  console.log("RESPONSE BODY:\n", _responseBody);
 
   var https = require("https");
   var url = require("url");
@@ -111,7 +113,12 @@ let on_delete = (event, context) => {
 }
 
 const _on_event = (event, context) => {
-  console.log(event);
+  /**
+   * Securiting the SecretKey in the console.log
+   */
+  let _event = JSON.parse(JSON.stringify(event));;
+  _event.ResourceProperties.SecretKey = null;
+  console.log(_event);
   console.log(context);
   const request_type = event.RequestType;
   if (request_type == 'Create') { return on_create(event, context);}

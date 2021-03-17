@@ -5,6 +5,7 @@ const DEFAULT_EVENT = {
   ResourceProperties: {
     SecretKey: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
   },
+  ResponseURL: 'https://local.cloudformation.com/test',
 };
 
 const DEFAULT_CONTEXT = {
@@ -22,7 +23,7 @@ export function constructCFNCRREvent (options: any = DEFAULT_EVENT): CloudFormat
   const opts = Object.assign({}, DEFAULT_EVENT, options);
   return {
     ServiceToken: '',
-    ResponseURL: '',
+    ResponseURL: opts.ResponseURL,
     LogicalResourceId: '',
     PhysicalResourceId: '',
     RequestId: '',

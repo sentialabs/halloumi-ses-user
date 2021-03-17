@@ -1,14 +1,21 @@
+import nock from 'nock';
 import rewire from 'rewire';
 import { constructCFNCRREvent, constructCFNCRRContext } from './utils/helpers';
 
 process.env.AWS_REGION = 'us-east-1';
-jest.spyOn(global.console, 'log').mockImplementation();
 const _lambda = rewire('../src/lambda/index');
-_lambda.__set__('console', {
-  log: jest.fn(() => {}),
-});
+let consoleRevert: { (): void; (): void };
 
 describe('Test Lambda', () => {
+  beforeAll(() => {
+    consoleRevert = _lambda.__set__('console', {
+      log: jest.fn(() => {}),
+    });
+  });
+
+  afterAll(() => {
+    consoleRevert();
+  });
 
   it('should call on_create', async () => {
     const mockOnCreate = jest.fn(() => {});
@@ -105,5 +112,32 @@ describe('Test Lambda', () => {
     expect(mockSendResponse).toHaveBeenCalled();
     expect(mockSendResponse.mock.calls[0][2]).toBe('SUCCESS');
     revert();
+  });
+});
+
+let mockConsole = jest.fn((_msg, _object) => {});
+
+describe('Secure Lambda', () => {
+  beforeAll(() => {
+    consoleRevert = _lambda.__set__('console', {
+      log: mockConsole,
+    });
+  });
+
+  afterAll(() => {
+    consoleRevert();
+  });
+
+  it('should NOT log password', async () => {
+    const event = constructCFNCRREvent();
+    const context = constructCFNCRRContext();
+    nock('https://local.cloudformation.com')
+      .put('/test')
+      .reply(200, { results: {} });
+
+    _lambda.on_event(event, context);
+    expect(mockConsole).toHaveBeenCalled();
+    expect(mockConsole.mock.calls[0][0].ResourceProperties.SecretKey).toBeNull();
+    expect(mockConsole.mock.calls[3][1].Data.password).toBeNull();
   });
 });
