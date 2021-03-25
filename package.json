@@ -119,8 +119,8 @@
     "outdir": "dist",
     "targets": {
       "python": {
-        "distName": "halloumi-ses",
-        "module": "halloumi_ses"
+        "distName": "halloumi-ses-user",
+        "module": "halloumi_ses_user"
       }
     },
     "tsc": {
