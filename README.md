@@ -2,7 +2,7 @@
 
 Library used to create IAM Users and generates the password to use the AWS Simple Email Service (SES).
 
-## Usage {.tabset}
+## Usage
 
 ```typescript
 import * as cdk from '@aws-cdk/core';
