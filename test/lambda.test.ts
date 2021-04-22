@@ -18,13 +18,13 @@ describe('Test Lambda', () => {
   });
 
   it('should call on_create', async () => {
-    const mockOnCreate = jest.fn(() => {});
-    let revert = _lambda.__set__('on_create', mockOnCreate);
+    const _onCreate = jest.fn(() => {});
+    let revert = _lambda.__set__('on_create', _onCreate);
     const event = constructCFNCRREvent();
     const context = constructCFNCRRContext();
 
     _lambda.on_event(event, context);
-    expect(mockOnCreate).toHaveBeenCalled();
+    expect(_onCreate).toHaveBeenCalled();
 
     revert();
   });
@@ -32,28 +32,28 @@ describe('Test Lambda', () => {
   it('should send SUCCESS when call on_create', async () => {
     const event = constructCFNCRREvent();
     const context = constructCFNCRRContext();
-    const mockSendResponse = jest.fn((_event, _context, _responseStatus, _responseDat) => {});
-    let revertSendResponse = _lambda.__set__('sendResponse', mockSendResponse);
+    const _sendResponse = jest.fn((_event, _context, _responseStatus, _responseDat) => {});
+    let revertSendResponse = _lambda.__set__('sendResponse', _sendResponse);
 
     _lambda.on_event(event, context);
-    expect(mockSendResponse).toHaveBeenCalled();
-    expect(mockSendResponse.mock.calls[0][2]).toBe('SUCCESS');
-    expect(mockSendResponse.mock.calls[0][3]).toEqual({
+    expect(_sendResponse).toHaveBeenCalled();
+    expect(_sendResponse.mock.calls[0][2]).toBe('SUCCESS');
+    expect(_sendResponse.mock.calls[0][3]).toEqual({
       password: 'WzRdsEz/2FJQQt+rwbD6tTVhwGOQ7EZuFPZcbvrfFUsZYv0=',
     });
     revertSendResponse();
   });
 
   it('should call on_update', async () => {
-    const mockOnCreate = jest.fn(() => {});
-    let revert = _lambda.__set__('on_update', mockOnCreate);
+    const _onCreate = jest.fn(() => {});
+    let revert = _lambda.__set__('on_update', _onCreate);
     const event = constructCFNCRREvent({
       RequestType: 'Update',
     });
     const context = constructCFNCRRContext();
 
     _lambda.on_event(event, context);
-    expect(mockOnCreate).toHaveBeenCalled();
+    expect(_onCreate).toHaveBeenCalled();
 
     revert();
   });
@@ -63,26 +63,26 @@ describe('Test Lambda', () => {
       RequestType: 'Update',
     });
     const context = constructCFNCRRContext();
-    const mockSendResponse = jest.fn((_event, _context, _responseStatus, _responseDat) => {});
-    let revertSendResponse = _lambda.__set__('sendResponse', mockSendResponse);
+    const _sendResponse = jest.fn((_event, _context, _responseStatus, _responseDat) => {});
+    let revertSendResponse = _lambda.__set__('sendResponse', _sendResponse);
 
     _lambda.on_event(event, context);
-    expect(mockSendResponse).toHaveBeenCalled();
-    expect(mockSendResponse.mock.calls[0][2]).toBe('SUCCESS');
+    expect(_sendResponse).toHaveBeenCalled();
+    expect(_sendResponse.mock.calls[0][2]).toBe('SUCCESS');
 
     revertSendResponse();
   });
 
   it('should call on_delete', async () => {
-    const mockOnDelete = jest.fn(() => {});
-    let revert = _lambda.__set__('on_delete', mockOnDelete);
+    const _onDelete = jest.fn(() => {});
+    let revert = _lambda.__set__('on_delete', _onDelete);
     const event = constructCFNCRREvent({
       RequestType: 'Delete',
     });
     const context = constructCFNCRRContext();
 
     _lambda.on_event(event, context);
-    expect(mockOnDelete).toHaveBeenCalled();
+    expect(_onDelete).toHaveBeenCalled();
 
     revert();
   });
@@ -92,35 +92,35 @@ describe('Test Lambda', () => {
       RequestType: 'Delete',
     });
     const context = constructCFNCRRContext();
-    const mockSendResponse = jest.fn((_event, _context, _responseStatus, _responseDat) => {});
-    let revertSendResponse = _lambda.__set__('sendResponse', mockSendResponse);
+    const _sendResponse = jest.fn((_event, _context, _responseStatus, _responseDat) => {});
+    let revertSendResponse = _lambda.__set__('sendResponse', _sendResponse);
 
     _lambda.on_event(event, context);
-    expect(mockSendResponse).toHaveBeenCalled();
-    expect(mockSendResponse.mock.calls[0][2]).toBe('SUCCESS');
+    expect(_sendResponse).toHaveBeenCalled();
+    expect(_sendResponse.mock.calls[0][2]).toBe('SUCCESS');
 
     revertSendResponse();
   });
 
   it('should send', async () => {
-    const mockSendResponse = jest.fn((_event, _context, _responseStatus, _responseDat) => {});
-    let revert = _lambda.__set__('sendResponse', mockSendResponse);
+    const _sendResponse = jest.fn((_event, _context, _responseStatus, _responseDat) => {});
+    let revert = _lambda.__set__('sendResponse', _sendResponse);
     const event = constructCFNCRREvent();
     const context = constructCFNCRRContext();
 
     _lambda.on_event(event, context);
-    expect(mockSendResponse).toHaveBeenCalled();
-    expect(mockSendResponse.mock.calls[0][2]).toBe('SUCCESS');
+    expect(_sendResponse).toHaveBeenCalled();
+    expect(_sendResponse.mock.calls[0][2]).toBe('SUCCESS');
     revert();
   });
 });
 
-let mockConsole = jest.fn((_msg, _object) => {});
+let _console = jest.fn((_msg, _object) => {});
 
 describe('Secure Lambda', () => {
   beforeAll(() => {
     consoleRevert = _lambda.__set__('console', {
-      log: mockConsole,
+      log: _console,
     });
   });
 
@@ -136,8 +136,8 @@ describe('Secure Lambda', () => {
       .reply(200, { results: {} });
 
     _lambda.on_event(event, context);
-    expect(mockConsole).toHaveBeenCalled();
-    expect(mockConsole.mock.calls[0][0].ResourceProperties.SecretKey).toBeNull();
-    expect(mockConsole.mock.calls[3][1].Data.password).toBeNull();
+    expect(_console).toHaveBeenCalled();
+    expect(_console.mock.calls[0][0].ResourceProperties.SecretKey).toBeNull();
+    expect(_console.mock.calls[3][1].Data.password).toBeNull();
   });
 });
