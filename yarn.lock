@@ -872,9 +872,9 @@
     "@sinonjs/commons" "^1.7.0"
 
 "@types/aws-lambda@^8.10.72":
-  version "8.10.73"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.73.tgz#77773c9accb2cec26fcb7c6b510a555805604a53"
-  integrity sha512-P+a6TRQbRnVQOIjWkmw6F23wiJcF+4Uniasbzx7NAXjLQCVGx/Z4VoMfit81/pxlmcXNxAMGuYPugn6CrJLilQ==
+  version "8.10.75"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.75.tgz#93b4e688db8a45755018561a3212e7766c0fef57"
+  integrity sha512-orOKSsIVUMsAbKgbSX2ST3FwQt9pxinHVCAIAVl4SmmTxmki2Gu+cGqobMD3eYwDV5FV0YNtaXyxnvE9pLrKTw==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.1.14"
@@ -969,9 +969,9 @@
   integrity sha512-onlIwbaeqvZyniGPfdw/TEhKIh79pz66L1q06WUQqJLnAb6wbjvOtepLYTGHTqzdXgBYIE3ZdmqHDGsRsbBz7A==
 
 "@types/node@^10.17.0":
-  version "10.17.56"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.56.tgz#010c9e047c3ff09ddcd11cbb6cf5912725cdc2b3"
-  integrity sha512-LuAa6t1t0Bfw4CuSR0UITsm1hP17YL+u82kfHGrHUWdhlBtH7sa7jGY5z7glGaIj/WDYDkRtgGd+KCjCzxBW1w==
+  version "10.17.58"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.58.tgz#10682f6016fd866725c36d22ce6bbbd029bf4545"
+  integrity sha512-Dn5RBxLohjdHFj17dVVw3rtrZAeXeWg+LQfvxDIW/fdPkSiuQk7h3frKMYtsQhtIW42wkErDcy9UMVxhGW4O7w==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
