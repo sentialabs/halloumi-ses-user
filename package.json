@@ -20,11 +20,11 @@
     "watch": "npx projen watch",
     "package": "npx projen package",
     "eslint": "npx projen eslint",
-    "compat": "npx projen compat",
-    "docgen": "npx projen docgen"
+    "docgen": "npx projen docgen",
+    "compat": "npx projen compat"
   },
   "author": {
-    "name": "Sentia MPC",
+    "name": "Sentia",
     "email": "support.mpc@sentia.com",
     "organization": false
   },
@@ -52,6 +52,7 @@
     "rewire": "^5.0.0",
     "standard-version": "^9",
     "ts-jest": "^26.5.0",
+    "typedoc": "^0.20.35",
     "typescript": "^3.9.5"
   },
   "peerDependencies": {

@@ -4,6 +4,11 @@ import { Function, Code, Runtime } from '@aws-cdk/aws-lambda';
 import { Construct, Fn, CustomResource } from '@aws-cdk/core';
 
 const RESOURCE_TYPE = 'Custom::HalloumiSesUserPassword';
+/**
+ * Define a new IAM user and generates the SES credentials.
+ *
+ * @stability stable
+ */
 export class SesUser extends User {
   /**
    * An attribute that represents the user access_key.

@@ -69,6 +69,13 @@ let sign = (key, msg) => {
   return sign.read();
 }
 
+let signAndVersion = (version, hash) => {
+  return Buffer.concat([version,hash], (version.length + hash.length))
+}
+
+
+// Creates the CustomResource for the smtp password
+// @see https://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html
 let on_create = (event, context) => {
   let key = event.ResourceProperties.SecretKey;
   let region = process.env.AWS_REGION || 'us-east-1';
@@ -86,7 +93,7 @@ let on_create = (event, context) => {
   hash = sign(hash, service);
   hash = sign(hash, terminal);
   hash = sign(hash, message);
-  let signatureAndVersion = Buffer.concat([version,hash], (version.length + hash.length));
+  let signatureAndVersion = signAndVersion(version, hash);
 
   let responseData = {
     'password': signatureAndVersion.toString('base64')
