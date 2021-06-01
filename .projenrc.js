@@ -38,7 +38,7 @@ const project = new AwsCdkConstructLibrary({
 
   /* NodeProjectOptions */
   antitamper: false, /* Checks that after build there are no modified files on git. */
-
+  projenUpgradeSecret: 'GITHUB_TOKEN',
   dependabot: true, /* Include dependabot configuration. */
   dependabotOptions: {
     autoMerge: true,
