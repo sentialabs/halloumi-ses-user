@@ -4,13 +4,13 @@
 
 Name|Description
 ----|-----------
-[SesUser](#halloumi-ses-sesuser)|*No description*
+[SesUser](#halloumi-ses-sesuser)|Define a new IAM user and generates the SES credentials.
 
 
 
 ## class SesUser  <a id="halloumi-ses-sesuser"></a>
 
-
+Define a new IAM user and generates the SES credentials.
 
 __Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [IResource](#aws-cdk-core-iresource), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [IConstruct](#aws-cdk-core-iconstruct), [IIdentity](#aws-cdk-aws-iam-iidentity), [IGrantable](#aws-cdk-aws-iam-igrantable), [IPrincipal](#aws-cdk-aws-iam-iprincipal), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [IConstruct](#aws-cdk-core-iconstruct), [IResource](#aws-cdk-core-iresource), [IUser](#aws-cdk-aws-iam-iuser), [IGrantable](#aws-cdk-aws-iam-igrantable), [IPrincipal](#aws-cdk-aws-iam-iprincipal), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [IConstruct](#aws-cdk-core-iconstruct), [IResource](#aws-cdk-core-iresource), [IIdentity](#aws-cdk-aws-iam-iidentity)
 __Extends__: [User](#aws-cdk-aws-iam-user)
