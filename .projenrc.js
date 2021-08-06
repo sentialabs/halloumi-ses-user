@@ -57,7 +57,7 @@ const project = new AwsCdkConstructLibrary({
       },
     },
   }, /* Jest options. */
-  projenUpgradeSecret: 'GITHUB_TOKEN',
+  projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
 });
 
 //project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');
