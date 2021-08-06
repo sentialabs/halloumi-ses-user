@@ -9,7 +9,7 @@ const project = new AwsCdkConstructLibrary({
   name: 'halloumi-ses',
   repositoryUrl: 'https://github.com/sentialabs/halloumi-ses-user.git',
 
-  cdkAssert: true,                                                           /* Install the @aws-cdk/assert library? */
+  cdkAssert: true, /* Install the @aws-cdk/assert library? */
   cdkDependencies: [
     '@aws-cdk/aws-iam',
     '@aws-cdk/aws-lambda',
@@ -17,8 +17,8 @@ const project = new AwsCdkConstructLibrary({
   ], /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
   cdkTestDependencies: undefined, /* AWS CDK modules required for testing. */
 
-  docgen: true,                                                              /* Automatically generate API.md from jsii. */
-  eslint: true,                                                              /* Install eslint. */
+  docgen: true, /* Automatically generate API.md from jsii. */
+  eslint: true, /* Install eslint. */
 
   publishToPypi: {
     distName: 'halloumi-ses-user',
