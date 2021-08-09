@@ -14,15 +14,18 @@
     "test:update": "npx projen test:update",
     "bump": "npx projen bump",
     "unbump": "npx projen unbump",
+    "publish:github": "npx projen publish:github",
     "upgrade-projen": "npx projen upgrade-projen",
     "default": "npx projen default",
     "watch": "npx projen watch",
     "package": "npx projen package",
     "eslint": "npx projen eslint",
-    "docgen": "npx projen docgen",
     "compat": "npx projen compat",
-    "projen": "npx projen",
-    "start": "npx projen start"
+    "publish:npm": "npx projen publish:npm",
+    "publish:pypi": "npx projen publish:pypi",
+    "docgen": "npx projen docgen",
+    "release": "npx projen release",
+    "projen": "npx projen"
   },
   "author": {
     "name": "Sentia",
@@ -50,11 +53,10 @@
     "json-schema": "^0.3.0",
     "nock": "^13.0.11",
     "npm-check-updates": "^11",
-    "projen": "^0.20.11",
+    "projen": "^0.27.23",
     "rewire": "^5.0.0",
     "standard-version": "^9",
     "ts-jest": "^26.5.0",
-    "typedoc": "^0.20.35",
     "typescript": "^3.9.5"
   },
   "peerDependencies": {
