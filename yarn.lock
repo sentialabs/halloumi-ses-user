@@ -812,7 +812,7 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jsii/spec@^1.29.0", "@jsii/spec@^1.30.0", "@jsii/spec@^1.32.0":
+"@jsii/spec@^1.30.0", "@jsii/spec@^1.32.0":
   version "1.32.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.32.0.tgz#e921afaa89e19a74abee2182ff259c9090f4c452"
   integrity sha512-XjSnqvmBXvFork9w3ehacqaa0JmUVaEYubOzR1l6z67z2FDZ9C4KP7EqMqjnv/S+j+Ou3tWQPfLICnl6aK1iGA==
@@ -4668,13 +4668,13 @@ jsesc@^2.5.1:
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
 jsii-diff@^1.20.1:
-  version "1.29.0"
-  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.29.0.tgz#572bd3e0c9172fac3f1bf1cc4635501f57bbc8a0"
-  integrity sha512-Zc+h5C2XUGgVtT3qxerIDtPlvtjie45b5o5bZ6T/R+p0ClULrYmRl74+u1ztLqtOYcVqkhs6Qj11dgyZOCGzBA==
+  version "1.32.0"
+  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.32.0.tgz#36556665be3f428be4e8a6ba015312145fa228ce"
+  integrity sha512-EUooRzl22VZ+5njNw+zqHw+lYy4asrfa6Vwss+eKL3zVldkNyQj9qEpJI5Y5suzpzdfnXqyvQuRUQ2C+ShcrYw==
   dependencies:
-    "@jsii/spec" "^1.29.0"
+    "@jsii/spec" "^1.32.0"
     fs-extra "^9.1.0"
-    jsii-reflect "^1.29.0"
+    jsii-reflect "^1.32.0"
     log4js "^6.3.0"
     typescript "~3.9.9"
     yargs "^16.2.0"
@@ -4707,7 +4707,7 @@ jsii-pacmak@^1.20.1:
     xmlbuilder "^15.1.1"
     yargs "^16.2.0"
 
-jsii-reflect@^1.29.0, jsii-reflect@^1.30.0, jsii-reflect@^1.32.0:
+jsii-reflect@^1.30.0, jsii-reflect@^1.32.0:
   version "1.32.0"
   resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.32.0.tgz#30ad211bf2d325ad66d7e6690189225421f81de4"
   integrity sha512-BJN8pgxSa3LlP5yPfxtaviSjsHKpG9b4xOr2kXv6w/SElIX15Q5/tKauI4/ZHTnBHGimRWh9ACNtxXAxvH0Vqg==
