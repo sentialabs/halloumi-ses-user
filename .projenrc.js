@@ -1,4 +1,4 @@
-const { AwsCdkConstructLibrary } = require('projen');
+const { AwsCdkConstructLibrary, DependenciesUpgradeMechanism } = require('projen');
 
 const project = new AwsCdkConstructLibrary({
   author: 'Sentia',
@@ -39,11 +39,6 @@ const project = new AwsCdkConstructLibrary({
   /* NodeProjectOptions */
   antitamper: false, /* Checks that after build there are no modified files on git. */
 
-  dependabot: true, /* Include dependabot configuration. */
-  dependabotOptions: {
-    autoMerge: true,
-  }, /* Options for dependabot. */
-
   jest: true, /* Setup jest unit tests. */
   jestOptions: {
     jestVersion: '26.6.3',
@@ -58,6 +53,12 @@ const project = new AwsCdkConstructLibrary({
     },
   }, /* Jest options. */
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
+  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+    include: ['@aws-cdk/*']
+  }),
+  gitignore: [
+    '.vscode/'
+  ]
 });
 
 //project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');

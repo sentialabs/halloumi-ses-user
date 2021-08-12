@@ -86,7 +86,13 @@
       "type": "build"
     },
     {
+      "name": "npm-check-updates",
+      "version": "^11",
+      "type": "build"
+    },
+    {
       "name": "projen",
+      "version": "^0.20.11",
       "type": "build"
     },
     {
@@ -100,6 +106,11 @@
     },
     {
       "name": "ts-jest",
+      "type": "build"
+    },
+    {
+      "name": "typedoc",
+      "version": "^0.20.35",
       "type": "build"
     },
     {
