@@ -54,11 +54,11 @@ const project = new AwsCdkConstructLibrary({
   }, /* Jest options. */
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
   depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
-    include: ['@aws-cdk/*']
+    include: ['@aws-cdk/*'],
   }),
   gitignore: [
-    '.vscode/'
-  ]
+    '.vscode/',
+  ],
 });
 
 //project.buildTask.exec('esbuild src/lambda/index.ts --bundle --platform=node --target=node12 --external:aws-sdk --outfile=dist/lambda/index.js');
